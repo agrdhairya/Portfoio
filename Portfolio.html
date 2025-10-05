@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dhairya Agarwal - Personal Portfolio</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-blue: #2c3e50; 
+            --dark-blue: #1a252f;   
+            --light-gray: #ecf0f1;   
+            --text-dark: #34495e;     
+            --text-light: #7f8c8d;    
+            --background-color: #f8f9fa; 
+            --card-background: #ffffff;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3 {
+            font-weight: 700;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .header {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 0;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            margin-left: 2.5rem;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+        
+        .mobile-menu-button, #mobile-menu-toggle {
+            display: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: calc(100vh - 90px);
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 650px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .hero-description {
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .hero-button {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .hero-button:hover {
+            background-color: var(--dark-blue);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .hero-image {
+            display: none; 
+        }
+
+        /* About Section */
+         #about {
+            background-color: white;
+         }
+        .about-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .about-text {
+            flex: 1;
+        }
+
+        /* Projects Section */
+        .project-card-container {
+            max-width: 550px;
+            margin: 0 auto;
+        }
+        
+        .project-card {
+            background-color: var(--card-background);
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover {
+             transform: translateY(-5px);
+             box-shadow: var(--shadow-lg);
+        }
+        
+        .project-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+        
+        .project-card-content {
+            padding: 1.5rem;
+        }
+
+        .project-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .project-card p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+        
+        .tech-tags span {
+            background-color: var(--light-gray);
+            color: var(--primary-blue);
+            font-size: 0.8rem;
+            padding: 5px 12px;
+            border-radius: 9999px;
+            margin-right: 0.5rem;
+            display: inline-block;
+            margin-top: 5px;
+        }
+        
+        .project-links {
+            margin-top: 1.5rem;
+        }
+        
+        .project-links a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            margin-right: 1rem;
+            font-weight: 500;
+        }
+
+        .project-links a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Skills Section */
+        .skills-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .skill-tag {
+            background-color: var(--card-background);
+            color: var(--text-dark);
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--light-gray);
+        }
+        
+        /* Contact Form */
+        .contact-form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--card-background);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #cbd5e1;
+            background-color: var(--background-color);
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(44, 62, 80, 0.1);
+        }
+        
+        .submit-button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            background-color: var(--primary-blue);
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .submit-button:hover {
+            background-color: var(--dark-blue);
+            transform: translateY(-2px);
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--dark-blue);
+            color: white;
+            text-align: center;
+            padding: 2.5rem 0;
+        }
+        
+        .footer p {
+            color: #bdc3c7; 
+        }
+        
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .mobile-menu-button, #mobile-menu-toggle {
+                display: none;
+            }
+            
+            #mobile-menu {
+                display: none !important;
+            }
+
+            .hero {
+                flex-direction: row;
+                text-align: left;
+                justify-content: space-between;
+            }
+            
+            .hero-content {
+                margin-right: 2rem;
+            }
+            
+            .hero-image {
+                display: block;
+            }
+
+            .hero-image img {
+                width: 350px;
+                height: 350px;
+                border-radius: 50%;
+                object-fit: cover;
+                border: 6px solid white;
+                box-shadow: var(--shadow-lg);
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .nav-links {
+                display: none;
+            }
+            .mobile-menu-button {
+                display: block;
+                cursor: pointer;
+            }
+            
+            .mobile-menu-button svg {
+                 width: 24px;
+                 height: 24px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            #mobile-menu {
+                display: none;
+                background-color: white;
+                padding: 1rem 24px;
+                border-top: 1px solid var(--light-gray);
+                position: absolute;
+                left:0;
+                right:0;
+                top: 100%;
+            }
+
+            #mobile-menu a {
+                display: block;
+                padding: 0.75rem 0;
+                color: var(--text-light);
+                text-decoration: none;
+            }
+            
+            #mobile-menu-toggle:checked ~ .navbar + #mobile-menu {
+                display: block; 
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <input type="checkbox" id="mobile-menu-toggle" class="hidden">
+            <nav class="navbar">
+                <a href="#home" class="nav-logo">DA</a>
+                <div class="nav-links">
+                    <a href="#about">About</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <label for="mobile-menu-toggle" class="mobile-menu-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                </label>
+            </nav>
+            <div id="mobile-menu">
+                 <a href="#about">About</a>
+                 <a href="#projects">Projects</a>
+                 <a href="#skills">Skills</a>
+                 <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        
+        <section id="home">
+            <div class="container hero">
+                <div class="hero-content">
+                    <h1>Hi, I'm Dhairya Agarwal</h1>
+                    <p class="hero-description">I create modern, responsive, and user-friendly web applications.</p>
+                    <a href="#projects" class="hero-button">View My Work</a>
+                </div>
+                <div class="hero-image">
+                    <img src="https://placehold.co/400x400/E2E8F0/334155?text=DA" alt="Dhairya Agarwal Portrait">
+                </div>
+            </div>
+        </section>
+        
+        <section id="about">
+            <div class="container">
+                <h2>About Me</h2>
+                <p class="section-subtitle">A brief introduction to who I am and what I do.</p>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>I am a student currently learning the ropes of web development. I love turning complex problems into simple, beautiful, and intuitive designs. My journey in tech started with a simple "Hello World" and has grown into a passion for creating dynamic web experiences.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="container">
+                <h2>My Projects</h2>
+                <p class="section-subtitle">Here's some of the work I'm most proud of.</p>
+                <div class="project-card-container">
+                    <div class="project-card">
+                        <img src="https://placehold.co/600x400/27ae60/ffffff?text=KhetSe" alt="KhetSe App Screenshot">
+                        <div class="project-card-content">
+                            <h3>KhetSe - Agri-Tech App</h3>
+                            <p>A hackathon project designed to connect farmers directly with consumers, streamlining the supply chain.</p>
+                            <div class="tech-tags">
+                                <span>HTML5</span>
+                                <span>CSS3</span>
+                                <span>JavaScript</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#">Live Demo</a>
+                                <a href="#">Source Code</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" style="background-color: var(--card-background);">
+            <div class="container">
+                <h2>My Skills</h2>
+                <p class="section-subtitle">Technologies I have experience working with.</p>
+                <div class="skills-container">
+                    <div class="skills-grid">
+                        <div class="skill-tag">HTML5</div>
+                        <div class="skill-tag">CSS3</div>
+                        <div class="skill-tag">JavaScript</div>
+                        <div class="skill-tag">Java</div>
+                        <div class="skill-tag">Godot</div>
+                        <div class="skill-tag">Responsive Design</div>
+                        <div class="skill-tag">CSS Flexbox</div>
+                        <div class="skill-tag">CSS Grid</div>
+                        <div class="skill-tag">Git & GitHub</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+        <section id="contact">
+            <div class="container">
+                <h2>Get in Touch</h2>
+                <p class="section-subtitle">Have a project in mind or just want to say hi? I'd love to hear from you!</p>
+                <div class="contact-form-container">
+                    <form action="#" method="POST">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" placeholder="Dhairya Agarwal" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" name="email" placeholder="dhairya.agarwal@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Leave a message..." required></textarea>
+                        </div>
+                        <button type="submit" class="submit-button">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Dhairya Agarwal</p>
+        </div>
+    </footer>
+</body>
+</html>
